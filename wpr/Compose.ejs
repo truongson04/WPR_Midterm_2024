@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family:'Outfit';
+            background:linear-gradient(white, pink);
+
+        }
+
+
+
+        .sidebar{
+           flex:0.5;
+           max-width:300px;
+           padding-right:20px;
+           margin-top:150px;
+           margin-left: 100px;
+           
+           
+
+       }
+       .sidebar_compose{
+           margin-top:15px;
+           margin-left:10px;
+           margin-bottom:15px;
+           text-transform: capitalize;
+           color:gray;
+           padding:15px;
+           border-radius: 30px;
+           background-color: aliceblue;
+           display:flex;
+           align-items: center;
+           cursor: pointer;
+           outline:none;
+           border:none;
+           box-shadow: 0px, 2px, 5px-2px rgba(red, 0, 0, 0.75)
+
+       }
+       .sidebarOption{
+           display:flex;
+           align-items: center;
+           height:60px;
+           padding: 0 10px;
+           border-top-right-radius: 20px;
+           border-bottom-right-radius:20px;
+           cursor:pointer;
+           color:gray;
+           
+
+       }
+       .sidebar a{
+           text-decoration: none;
+           color:gray;
+       }
+       .sidebar h3{
+           flex:1;
+           margin-left: 10px;
+           font-size: 14px;
+           font-weight: 400;
+
+       }
+       .sidebarOption:hover,
+       .sidebarOption:hover h3 {
+          background-color: aliceblue;
+          color:cyan;
+
+       }
+        .contact-container{
+            height:100vh;
+            display:flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+        .contact-left{
+            display:flex;
+            flex-direction: column;
+            align-items: start;
+            gap:20px;
+        }
+        .contact-left-titke{
+            font-weight: 600;
+            color:cyan;
+            font-size:40px;
+            margin-bottom: 5px;
+
+        }
+        .contact-left-title hr{
+            border:none;
+            width:120px;
+            height: 5px;
+            background-color: purple;
+            border-radius:10px;
+            margin-bottom: 20px;
+        }
+        .contact-input{
+            width:400px;
+            height:50px;
+            border:none;
+            outline:none;
+            padding-left:25px;
+            font-weight:500;
+            color:gray;
+            border-radius:50px;
+
+        }
+        .contact-left textarea{
+            height:140px;
+            padding-top:15px;
+            border-radius: 20px;
+
+        }
+        .contact-inputs:focus{
+            border: 2px solid cyan;
+        }
+.contact-inputs::placeholder{
+    color:gray;
+
+}
+.contact-left button{
+    display:flex;
+    align-items: center;
+    padding: 15px 30px;
+    font-size:16px;
+    color:cyan;
+    gap:10px;
+    border:none;
+    border-radius:50px;
+    background-color:black;
+    cursor:pointer;
+
+}
+.main_body{
+    display:flex;
+}
+
+
+        
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <di class="main_body">
+
+    <div class="sidebar">
+        <button class="sidebar_compose">
+           <a href="Compose" >Compose++</a>
+        </button>
+        <div class="sidebarOption">
+            <a href="inbox"><h3>Inbox</h3></a>
+        </div>
+         <div class="sidebarOption">
+            <a href="outbox"><h3 style="color:aqua">Outbox</h3></a>
+        </div>
+         <div class="sidebarOption">
+            <form action="server" method="POST">
+                <input type="hidden" name="action" value="logout">
+            <button type="submit" class="sign_out_btn">Sign out</button>
+            </form>
+        </div>
+
+    </div>
+    <div class="contact-container">
+        <form action="server" class="contact-left" method="POST"  onsubmit="return validateForm()">
+            <input type="hidden" name="action" value="send">
+                   <div class="contact-left-title">
+                    <h2>Let's chat</h2>
+                    <hr>
+                   </div>
+                   <div class="contact-input">
+                    <label for="options">Choose the receiver</label>
+                    <select id="options" name="email">
+                        <option value="0" disabled selected>Select an option</option>
+                        <% messages.forEach((msg) => { %>
+                        <option value="<%= msg.email %>" name="email"><%= msg.email %></option>
+                        <% }) %>
+                    </select>
+                    
+    
+                   </div>
+                   
+                   <input type=text name="subject" placeholder="Your subjct" class="contact-input">
+                   <textarea name="body" placeholder="Your message" class="contact-input"></textarea>
+                   <button type="submit" id="btn">Send</button>
+
+        </form>
+        
+
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            const selectElement = document.getElementById('options');
+            if (selectElement.value === "0") {
+                alert("Please select a receiver before sending the message.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+    
+</body>
+  
+
+</html>
