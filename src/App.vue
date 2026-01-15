@@ -1,28 +1,39 @@
 <script setup>
 import { ref } from "vue";
-import UserList from "./components/Buổi-6/UserList.vue";
-const isShow = ref(true);
-// import Hello from './components/Hello.vue';
+
+const id = ref(0);
+const keyword = ref("gay");
 </script>
 
 <template>
-  <button
-    @click="
-      () => {
-        isShow = !isShow;
-      }
-    "
-  >
-    {{ isShow ? "Hide" : "Show" }}
-  </button>
-  <UserList v-if="isShow" />
+  <div id="nav-bar">
+    <router-link to="/">Trang chủ</router-link> |
+    <router-link to="/about">Giới thiệu</router-link>
+    <router-link
+      :to="{
+        path: '/details',
+        name: 'Details',
+        params: {
+          id: 123,
+        },
+      }"
+      >Chi tiết
+    </router-link>
+    <router-link
+      :to="{
+        path: '/search',
+        query: { key: keyword },
+      }"
+      >Tìm kiếm</router-link
+    >
+    <router-link
+      :to="{
+        path: '/:pathMatch(.*)*',
+      }"
+      >Not found</router-link
+    >
+  </div>
+  <button @click="id++">tăng</button>
+  <router-view />
 </template>
-<style scoped>
-button {
-  margin-bottom: 15px;
-  margin-top: 15px;
-  border-radius: 15px;
-  padding: 15px;
-  background-color: aquamarine;
-}
-</style>
+<style scoped></style>
