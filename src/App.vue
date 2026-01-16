@@ -1,11 +1,9 @@
 <script setup>
-import Header from "./components/Buoi-8/Header.vue";
-import Login from "./components/Buoi-8/Login.vue";
+import User from "./components/Buoi-9/User.vue";
 </script>
 
 <template>
-  <Header />
-  <Login />
+  <User />
 </template>
 
 <style scoped></style>
