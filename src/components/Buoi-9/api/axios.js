@@ -1,4 +1,4 @@
-import { alertProps } from "ant-design-vue/es/alert";
+
 import axios from "axios"
 const genRandom = ()=>{
     let result ="";

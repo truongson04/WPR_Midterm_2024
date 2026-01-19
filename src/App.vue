@@ -1,9 +1,9 @@
 <script setup>
-import User from "./components/Buoi-9/User.vue";
+import Form from "./components/Buoi-10/Form.vue";
 </script>
 
 <template>
-  <User />
+  <Form />
 </template>
 
 <style scoped></style>
