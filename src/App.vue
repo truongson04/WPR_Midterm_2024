@@ -1,9 +1,7 @@
-<script setup>
-import Form from "./components/Buoi-10/Form.vue";
-</script>
+<script setup></script>
 
 <template>
-  <Form />
+  <router-view></router-view>
 </template>
 
 <style scoped></style>
