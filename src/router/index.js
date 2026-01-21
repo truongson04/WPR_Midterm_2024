@@ -1,24 +1,62 @@
-import UserList from "../components/Buoi-11/UserList.vue"
-import UserDetails from "../components/Buoi-11/UserDetails.vue"
-import { createRouter, createWebHistory } from "vue-router"
+import Users from "../components/Buoi-12/Users.vue"
+import Login from "../components/Buoi-12/Login.vue"
+import { createRouter, createWebHashHistory, createWebHistory } from "vue-router"
+import { userAuth } from "../components/Buoi-12/store/userAuth"
+import Admin from "../components/Buoi-12/Admin.vue"
 
-const routes=[
+const routes =[
     {
         path:"/",
-        name:"UserList",
-        component:UserList,
-      
-        
-
+        component:Users,
+        meta:{
+            requireLoggedIn:true
+        }
     },
     {
-        path:"/user/:id",
-        name:"User",
-        component:UserDetails
+        path:"/login",
+        name:'Login',
+        component:Login
+    }
+    ,
+    {
+        path:"/users",
+        name:"Users",
+        component:Users,
+        meta:{
+            requireLoggedIn: true
+        }
+    },
+    {
+        path:"/admin",
+        name:"Admin", 
+        component:Admin,
+        meta:{
+            requireLoggedIn:true
+        },
+        beforeEnter:(to, from)=>{
+            const authStore = userAuth()
+            if(authStore.role!=="admin"){
+                window.confirm("access denied")
+            return{
+                path:"/users"
+            }
+        }
+        }
     }
 ]
-const router = createRouter({
-    history:createWebHistory(),
+    const router = createRouter({
+    history: createWebHistory(),
     routes
+    })
+router.beforeEach((to , from)=>{
+    const authStore = userAuth()
+    if(to.meta.requireLoggedIn && !authStore.isLoggedIn){
+        return {
+            path:"/login"
+        }
+    }
+  
+   
+  
 })
 export default router
