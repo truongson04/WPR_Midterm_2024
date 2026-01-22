@@ -1,7 +1,9 @@
-<script setup></script>
+<script setup>
+import UsersList from "./components/Buoi-13/UsersList.vue";
+</script>
 
 <template>
-  <router-view></router-view>
+  <UsersList />
 </template>
 
 <style scoped></style>

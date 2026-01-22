@@ -1,11 +1,14 @@
 <script setup>
 import { userAuth } from "./store/userAuth";
-
+const ROLE = {
+  ADMIN: "admin",
+  USER: "user",
+};
 const auth = userAuth();
 </script>
 <template>
   <h1>Admin page</h1>
-  <div v-if="auth.role == 'admin'">Admin panel</div>
+  <div v-if="auth.role === ROLE.ADMIN">Admin panel</div>
   <h3 v-else>Access denied</h3>
 </template>
 <style scoped>

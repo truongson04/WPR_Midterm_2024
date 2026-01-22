@@ -3,7 +3,10 @@ import Login from "../components/Buoi-12/Login.vue"
 import { createRouter, createWebHashHistory, createWebHistory } from "vue-router"
 import { userAuth } from "../components/Buoi-12/store/userAuth"
 import Admin from "../components/Buoi-12/Admin.vue"
-
+const ROLES = {
+    ADMIN:"admin",
+    USER: "user"
+}
 const routes =[
     {
         path:"/",
@@ -19,7 +22,7 @@ const routes =[
     }
     ,
     {
-        path:"/users",
+        path:"/client",
         name:"Users",
         component:Users,
         meta:{
@@ -27,7 +30,7 @@ const routes =[
         }
     },
     {
-        path:"/admin",
+        path:"/adPage",
         name:"Admin", 
         component:Admin,
         meta:{
@@ -35,10 +38,10 @@ const routes =[
         },
         beforeEnter:(to, from)=>{
             const authStore = userAuth()
-            if(authStore.role!=="admin"){
+            if(authStore.role!==ROLES.ADMIN){
                 window.confirm("access denied")
             return{
-                path:"/users"
+                path:"/client"
             }
         }
         }

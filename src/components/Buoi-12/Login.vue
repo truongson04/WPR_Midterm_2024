@@ -4,11 +4,8 @@ import { userAuth } from "./store/userAuth";
 const router = useRouter();
 const auth = userAuth();
 const handleLogin = (roleValue) => {
-  auth.isLoggedIn = true;
-  auth.role = roleValue;
-  router.push({
-    path: `/${roleValue}`,
-  });
+  auth.login();
+  auth.changeRole(roleValue);
 };
 </script>
 <template>
