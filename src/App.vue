@@ -1,9 +1,9 @@
 <script setup>
-import UsersList from "./components/Buoi-13/UsersList.vue";
+import Input from "./components/Buoi-14/Input.vue";
 </script>
 
 <template>
-  <UsersList />
+  <Input />
 </template>
 
 <style scoped></style>
