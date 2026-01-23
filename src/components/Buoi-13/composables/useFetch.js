@@ -6,12 +6,10 @@ export default function useFetch(url){
     const getData= async()=>{
         try{
         const response = await axios.get(url);
-        console.log(response)
         data.value = response.data;
-        console.log(data.value)
         }
         catch(err){
-          console.log(err)
+        window.alert("There is something wrong")
 
         }
     }

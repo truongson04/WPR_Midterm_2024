@@ -36,7 +36,7 @@ const handleSearch = () => {
   />
   <button @click="handleSearch">Search</button>
 
-  <table v-if="filteredUsers && filteredUsers.length > 0" class="filtered">
+  <table v-if="filteredUsers.length > 0" class="filtered">
     <tr>
       <th>Name</th>
       <th>Age</th>
