@@ -10,6 +10,7 @@ const UI = UIStore();
 onMounted(() => {
   userStore.getUsers();
 });
+// cần chia store để gom các logic nghiệp vụ khác nhau vào cùng một chỗ để tiện quản lý hơn khi ứng dụng được mở rộng
 </script>
 <template>
   <div v-if="useAuth.isLoggedIn" class="user-list-container">
